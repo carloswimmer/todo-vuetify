@@ -2,9 +2,9 @@
   <div class="home">
     <h1>Homepage</h1>
     
-      <v-btn class="pink mx-3" dark>click me</v-btn>
+      <v-btn class="pink mx-3 hidden-md-and-up" dark>click me</v-btn>
       <v-btn depressed class="pink mx-3">click me</v-btn>
-      <v-btn text color="pink" class="mx-3">click me</v-btn>
+      <v-btn text color="pink" class="mx-3 hidden-sm-and-down">click me</v-btn>
       <v-btn depressed class="pink mx-3" dark>
         <v-icon left>mdi-email</v-icon>
         email
@@ -17,7 +17,7 @@
         email
         <v-icon right>mdi-email</v-icon>
       </v-btn>
-      <v-btn fab small depressed class="purple mx-3" dark>
+      <v-btn fab small depressed class="purple mx-3 d-md-none" dark>
         <v-icon>mdi-heart</v-icon>
       </v-btn>
   </div>
