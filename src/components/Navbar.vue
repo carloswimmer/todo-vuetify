@@ -12,8 +12,8 @@
         <v-icon right>mdi-exit-to-app</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-navigation-drawer clipped app v-model="drawer" class="indigo">
-      <p>test</p>
+    <v-navigation-drawer clipped app v-model="drawer" class="primary">
+      <p class="success">test</p>
     </v-navigation-drawer>
   </nav>
 </template>
