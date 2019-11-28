@@ -37,10 +37,10 @@ export default {
     return {
       drawer: false,
       items: [
-        { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-        { title: 'Account', icon: 'mdi-account-box' },
-        { title: 'Admin', icon: 'mdi-gavel' },
-      ],
+        { title: 'Dashboard', icon: 'mdi-view-dashboard', route: '/' },
+        { title: 'My Projects', icon: 'mdi-folder', route: '/projects' },
+        { title: 'Team', icon: 'mdi-account-circle', route: '/team' }
+      ]
     }
   }
 }
