@@ -12,8 +12,21 @@
         <v-icon right>mdi-exit-to-app</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-navigation-drawer clipped app v-model="drawer" class="primary">
-      <p class="success">test</p>
+    <v-navigation-drawer dark clipped app v-model="drawer" class="primary">
+      <v-list>
+        <v-list-item v-for="item in items" :key="item.title" link>
+          <v-list-item-icon>
+            <v-icon>
+              {{ item.icon }}
+            </v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ item.title }}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
     </v-navigation-drawer>
   </nav>
 </template>
@@ -22,7 +35,12 @@
 export default {
   data() {
     return {
-      drawer: false
+      drawer: false,
+      items: [
+        { title: 'Dashboard', icon: 'mdi-view-dashboard' },
+        { title: 'Account', icon: 'mdi-account-box' },
+        { title: 'Admin', icon: 'mdi-gavel' },
+      ],
     }
   }
 }
