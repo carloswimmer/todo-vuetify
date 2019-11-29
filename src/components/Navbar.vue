@@ -14,7 +14,7 @@
     </v-app-bar>
     <v-navigation-drawer dark clipped app v-model="drawer" class="primary">
       <v-list>
-        <v-list-item v-for="item in items" :key="item.title" link>
+        <v-list-item v-for="item in items" :key="item.title" router :to="item.route" >
           <v-list-item-icon>
             <v-icon>
               {{ item.icon }}
@@ -39,7 +39,7 @@ export default {
       items: [
         { title: 'Dashboard', icon: 'mdi-view-dashboard', route: '/' },
         { title: 'My Projects', icon: 'mdi-folder', route: '/projects' },
-        { title: 'Team', icon: 'mdi-account-circle', route: '/team' }
+        { title: 'Team', icon: 'mdi-account', route: '/team' }
       ]
     }
   }
