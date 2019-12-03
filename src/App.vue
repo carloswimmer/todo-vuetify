@@ -4,7 +4,6 @@
     <v-content class="ma-4">
       <router-view/>
     </v-content>
-
   </v-app>
 </template>
 
@@ -17,7 +16,7 @@ export default {
     Navbar
   },
   data: () => ({
-    //
+    
   }),
 };
 </script>
