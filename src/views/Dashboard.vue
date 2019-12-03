@@ -1,9 +1,9 @@
 <template>
-  <div class="dashboard">
-    <h1>Dashboard</h1>
-    
-      
-      
+  <div>
+    <v-subheader>Dashboard</v-subheader>
+    <v-container class="ma-5">
+      content
+    </v-container>
   </div>
 </template>
 
@@ -12,9 +12,3 @@ export default {
   name: 'dashboard'
 }
 </script>
-
-<style>
-.dashboard {
-  margin: 15px;
-}
-</style>

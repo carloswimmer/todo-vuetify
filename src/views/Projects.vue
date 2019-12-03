@@ -1,9 +1,9 @@
 <template>
-  <div class="projects">
-    <h1>Projects</h1>
-    
-      
-      
+  <div>
+    <v-subheader>Projects</v-subheader>
+    <v-container class="ma-5">
+      content
+    </v-container>
   </div>
 </template>
 
@@ -12,9 +12,3 @@ export default {
   name: 'projects'
 }
 </script>
-
-<style>
-.projects {
-  margin: 15px;
-}
-</style>
