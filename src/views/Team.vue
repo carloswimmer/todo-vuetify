@@ -4,22 +4,24 @@
     <v-container class="my-5">
       <v-row>
         <v-col cols="12" sm="6" md="4" lg="3" v-for="person in team" :key="person.name">
-          <v-card class="text-center ma-3">
-            <v-responsive class="pt-4">
+          <v-card class="mx-auto" max-width="344">
+            <v-img :src="`https://cdn.vuetifyjs.com/images/cards/${person.bg}`" height="150px" class="text-center pt-4">
               <v-avatar size="100" class="grey lighten-2">
-                <img :src="person.avatar" :alt="`foto de ${person.name}`">
+                <img :src="person.avatar" :alt="`foto de ${person.name}`" />
               </v-avatar>
-            </v-responsive>
-            <v-card-text>
-              <div class="text-center subheading">{{ person.name }}</div>
-              <div class="grey--text">{{ person.role }}</div>
-            </v-card-text>
+            </v-img>
+
+            <v-card-title>{{ person.name }}</v-card-title>
+
+            <v-card-subtitle>{{ person.role }}</v-card-subtitle>
+
             <v-card-actions>
-              <v-btn text small color="grey">
-                <v-icon small left>mdi-message-text</v-icon>
+              <v-btn text color="grey">
+                <v-icon>mdi-message-text</v-icon>
                 Message
               </v-btn>
             </v-card-actions>
+
           </v-card>
         </v-col>
       </v-row>
