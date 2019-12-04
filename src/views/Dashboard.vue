@@ -2,6 +2,16 @@
   <div>
     <v-subheader>Dashboard</v-subheader>
     <v-container class="my-5">
+      <v-row class="mb-3">
+        <v-btn small text color="grey" class="mx-3" @click="sortBy('title')">
+          <v-icon left>mdi-folder</v-icon>
+          <span class="caption text-lowercase">by project</span>
+        </v-btn>
+        <v-btn small text color="grey" class="mx-3" @click="sortBy('person')">
+          <v-icon left>mdi-account</v-icon>
+          <span class="caption text-lowercase">by person</span>
+        </v-btn>
+      </v-row>
       <v-card class="px-3 mb-5" v-for="project in projects" :key="project.title">
         <v-row :class="`pa-3 project ${project.status}`">
           <v-col cols="12" md="6">
@@ -38,6 +48,11 @@ export default {
         { title: 'Design video thumbnails', person: 'Edmar Hilário', due: '20th Dec 2018', status: 'complete', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quis possimus unde nihil illum harum maxime ex? Sed, dolor! Odio placeat iure totam voluptatum accusamus unde Perferendis?' },
         { title: 'Create a community forum', person: 'Luiz Teixeira', due: '20th Oct 2018', status: 'overdue', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quis possimus unde nihil illum harum maxime ex? Sed, dolor! Odio placeat iure totam voluptatum accusamus unde excepturi repudiandae numquam? Perferendis?' },
       ]
+    }
+  },
+  methods: {
+    sortBy (prop) {
+      return this.projects.sort((a, b) => a[prop] < b[prop] ? -1 : 1) 
     }
   }
 }
