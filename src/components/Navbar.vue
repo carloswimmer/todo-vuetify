@@ -12,7 +12,7 @@
         <v-icon right>mdi-exit-to-app</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-navigation-drawer dark clipped app v-model="drawer" class="primary">
+    <v-navigation-drawer dark clipped app v-model="drawer" color="#00b2cc">
       <v-list>
         <v-list-item v-for="item in items" :key="item.title" router :to="item.route" >
           <v-list-item-icon>
