@@ -14,6 +14,17 @@
     </v-app-bar>
     <v-navigation-drawer dark clipped app v-model="drawer" color="#00b2cc">
       <v-list>
+        <v-list-item>
+          <v-list-item-avatar class="grey lighten-2">
+            <v-img src="/avatar-1.png" alt="Picture of me"></v-img>
+          </v-list-item-avatar>
+        </v-list-item>
+        <v-list-item link two-line>
+          <v-list-item-content>
+            <v-list-item-title class="title">Carlos Wimmer</v-list-item-title>
+            <v-list-item-subtitle>cw@santos.sp.gov.br</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item v-for="item in items" :key="item.title" router :to="item.route" >
           <v-list-item-icon>
             <v-icon>
