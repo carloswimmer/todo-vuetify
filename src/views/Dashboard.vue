@@ -3,14 +3,24 @@
     <v-subheader>Dashboard</v-subheader>
     <v-container class="my-5">
       <v-row class="mb-3">
-        <v-btn small text color="grey" class="mx-3" @click="sortBy('title')">
-          <v-icon left>mdi-folder</v-icon>
-          <span class="caption text-lowercase">by project</span>
-        </v-btn>
-        <v-btn small text color="grey" class="mx-3" @click="sortBy('person')">
-          <v-icon left>mdi-account</v-icon>
-          <span class="caption text-lowercase">by person</span>
-        </v-btn>
+        <v-tooltip top>
+          <template v-slot:activator="{ on }">
+            <v-btn small text color="grey" class="mx-3" v-on="on" @click="sortBy('title')">
+              <v-icon left>mdi-folder</v-icon>
+              <span class="caption text-lowercase">by project</span>
+            </v-btn>
+          </template>
+          <span>Sort projects by name</span>
+        </v-tooltip>
+        <v-tooltip top>
+          <template v-slot:activator="{ on }">
+            <v-btn small text color="grey" class="mx-3" v-on="on" @click="sortBy('person')">
+              <v-icon left>mdi-account</v-icon>
+              <span class="caption text-lowercase">by person</span>
+            </v-btn>
+          </template>
+          <span>Sort projects by person</span>
+        </v-tooltip>
       </v-row>
       <v-card class="px-3 mb-5" v-for="project in projects" :key="project.title">
         <v-row :class="`pa-3 project ${project.status}`">
