@@ -48,16 +48,13 @@
 </template>
 
 <script>
+import Content from '../assets/mock/projects'
+
 export default {
   name: 'dashboard',
   data() {
     return {
-      projects: [
-        { title: 'Design a new website', person: 'Carlos Wimmer', due: '1st Jan 2019', status: 'ongoing', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quis possimus unde nihil illum harum maxime ex? Sed, dolor! Odio placeat iure totam voluptatum accusamus unde excepturi' },
-        { title: 'Code up the homepage', person: 'Marcelo Lopes', due: '10th Jan 2019', status: 'complete', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quis possimus unde nihil illum harum maxime ex? Sed, dolor! Odio placeat iure totam voluptatum accusamus unde excepturi repudiandae numquam?' },
-        { title: 'Design video thumbnails', person: 'Edmar Hilário', due: '20th Dec 2018', status: 'complete', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quis possimus unde nihil illum harum maxime ex? Sed, dolor! Odio placeat iure totam voluptatum accusamus unde Perferendis?' },
-        { title: 'Create a community forum', person: 'Luiz Teixeira', due: '20th Oct 2018', status: 'overdue', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quis possimus unde nihil illum harum maxime ex? Sed, dolor! Odio placeat iure totam voluptatum accusamus unde excepturi repudiandae numquam? Perferendis?' },
-      ]
+      projects: Content.projects
     }
   },
   methods: {
