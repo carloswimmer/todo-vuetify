@@ -45,6 +45,9 @@
             <v-list-item-subtitle>cw@santos.sp.gov.br</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item class="mt-4 mb-3">
+          <popup />
+        </v-list-item>
 
         <v-list-item v-for="item in items" :key="item.title" router :to="item.route">
           <v-list-item-icon>
@@ -60,7 +63,12 @@
 </template>
 
 <script>
+import Popup from './Popup'
+
 export default {
+  components: {
+    Popup
+  },
   data() {
     return {
       drawer: false,
