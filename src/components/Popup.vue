@@ -8,15 +8,26 @@
       <v-card-title class="headline grey lighten-3" primary-title>Add a New Project</v-card-title>
 
       <v-card-text>
-        <v-form class="px-3">
-          <v-text-field name="title" label="Title" id="title" v-model="title" prepend-icon="mdi-folder"></v-text-field>
-          <v-textarea name="info" label="Information" id="info" v-model="content" prepend-icon="mdi-pencil"></v-textarea>
+        <v-form class="px-3" ref="form">
+          <v-text-field
+            name="title"
+            label="Title"
+            id="title"
+            v-model="title"
+            prepend-icon="mdi-folder"
+            :rules="inputRules"
+          ></v-text-field>
 
-          <v-menu
-            v-model="menu"
-            :close-on-content-click="false"
-            min-width="290"
-          >
+          <v-textarea
+            name="info"
+            label="Information"
+            id="info"
+            v-model="content"
+            prepend-icon="mdi-pencil"
+            :rules="inputRules"
+          ></v-textarea>
+
+          <v-menu v-model="menu" :close-on-content-click="false" min-width="290">
             <template v-slot:activator="{ on }">
               <v-text-field
                 :value="dateFormatted"
@@ -25,11 +36,11 @@
                 prepend-icon="mdi-calendar-range"
                 v-on="on"
                 @click:clear="due = null"
+                :rules="inputRules"
               ></v-text-field>
             </template>
             <v-date-picker v-model="due" @change="menu = false"></v-date-picker>
           </v-menu>
-
         </v-form>
       </v-card-text>
 
@@ -53,17 +64,22 @@ export default {
       menu: false,
       title: '',
       content: '',
-      due: new Date().toISOString().substr(0, 10)
+      due: new Date().toISOString().substr(0, 10),
+      inputRules: [
+        v => !!v || 'This field is required',
+        v => (v && v.length >= 3) || 'Minimum length is 3 characters'
+      ]
     }
   },
   methods: {
     submit() {
-      this.dialog = false
-      // eslint-disable-next-line no-console
-      console.log(this.title, this.content, this.due)
-      this.title = ''
-      this.content = ''
-      this.due = new Date().toISOString().substr(0, 10)
+      if (this.$refs.form.validate()) {
+        this.dialog = false
+        // eslint-disable-next-line no-console
+        console.log(this.title, this.content, this.due)
+        this.$refs.form.reset()
+      }
+
     }
   },
   computed: {
