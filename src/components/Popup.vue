@@ -48,7 +48,7 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="success" depressed @click="submit">Add project</v-btn>
+        <v-btn color="success" depressed @click="submit" :loading="loading">Add project</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -69,12 +69,15 @@ export default {
       inputRules: [
         v => !!v || 'This field is required',
         v => (v && v.length >= 3) || 'Minimum length is 3 characters'
-      ]
+      ],
+      loading: false
     }
   },
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
+        this.loading = true
+
         const project = {
           title: this.title,
           content: this.content,
@@ -85,11 +88,9 @@ export default {
 
         db.collection('projects').add(project)
           .then(() => {
+            this.loading = false
             this.dialog = false
-            // eslint-disable-next-line no-console
-            console.log('project', project)
-            // eslint-disable-next-line no-console
-            console.log('db', db)
+            this.$emit('projectAdded')
           })
       }
 

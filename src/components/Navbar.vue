@@ -1,11 +1,27 @@
 <template>
   <nav>
+    <v-snackbar
+      v-model="snackbar"
+      :timeout="timeout"
+      top
+      color="success"
+    >
+      Awsome! You added a new project.
+      <v-btn
+        color="white"
+        text
+        @click="snackbar = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
+
     <v-app-bar app clipped-left>
       <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title class="text-uppercase grey--text">
         <span class="font-weight-light">Todo</span>
-        <span>Ninja</span>
+        <span>Vuetify</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -46,7 +62,7 @@
           </v-list-item-content>
         </v-list-item>
         <v-list-item class="mt-4 mb-3">
-          <popup />
+          <popup @projectAdded="snackbar = true" />
         </v-list-item>
 
         <v-list-item v-for="item in items" :key="item.title" router :to="item.route">
@@ -76,12 +92,10 @@ export default {
         { title: 'Dashboard', icon: 'mdi-view-dashboard', route: '/' },
         { title: 'My Projects', icon: 'mdi-folder', route: '/projects' },
         { title: 'Team', icon: 'mdi-account', route: '/team' }
-      ]
+      ],
+      snackbar: false,
+      timeout: 4500
     }
   }
 }
 </script>
-
-<style>
-
-</style>
