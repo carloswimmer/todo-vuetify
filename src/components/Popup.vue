@@ -56,6 +56,7 @@
 
 <script>
 import moment from 'moment'
+import db from '@/fb'
 
 export default {
   data() {
@@ -64,7 +65,7 @@ export default {
       menu: false,
       title: '',
       content: '',
-      due: new Date().toISOString().substr(0, 10),
+      due: moment().format('YYYY-MM-DD'),
       inputRules: [
         v => !!v || 'This field is required',
         v => (v && v.length >= 3) || 'Minimum length is 3 characters'
@@ -74,10 +75,22 @@ export default {
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
-        this.dialog = false
-        // eslint-disable-next-line no-console
-        console.log(this.title, this.content, this.due)
-        this.$refs.form.reset()
+        const project = {
+          title: this.title,
+          content: this.content,
+          due: moment(this.due).format('Do MMM YYYY'),
+          person: 'Carlos Wimmer',
+          status: 'ongoing'
+        }
+
+        db.collection('projects').add(project)
+          .then(() => {
+            this.dialog = false
+            // eslint-disable-next-line no-console
+            console.log('project', project)
+            // eslint-disable-next-line no-console
+            console.log('db', db)
+          })
       }
 
     }
