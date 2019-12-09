@@ -1,7 +1,6 @@
 <template>
   <div>
-    <v-subheader>Team</v-subheader>
-    <v-container class="my-5">
+    <v-container class="my-3">
       <v-row>
         <v-col cols="12" sm="6" md="4" lg="3" v-for="person in team" :key="person.name">
           <v-card class="mx-auto" max-width="344">

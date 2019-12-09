@@ -1,7 +1,6 @@
 <template>
   <div>
-    <v-subheader>Projects</v-subheader>
-    <v-container class="my-5">
+    <v-container class="my-3">
       <v-expansion-panels>
         <v-expansion-panel v-for="project in myProjects" :key="project.title">
           <v-expansion-panel-header>
@@ -20,19 +19,32 @@
 </template>
 
 <script>
-import Content from '../assets/mock/projects'
+import db from '@/fb'
 
 export default {
   name: 'projects',
   data() {
     return {
-      projects: Content.projects
+      projects: []
     }
   },
   computed: {
     myProjects () {
       return this.projects.filter(item => item.person === 'Carlos Wimmer')
     }
+  },
+  created() {
+    db.collection('projects').onSnapshot(res => {
+      const changes = res.docChanges()
+      changes.forEach(change => {
+        if (change.type === 'added') {
+          this.projects.push({
+            ...change.doc.data(),
+            id: change.doc.id
+          })
+        }
+      })
+    })
   }
 }
 </script>

@@ -1,7 +1,6 @@
 <template>
   <div>
-    <v-subheader>Dashboard</v-subheader>
-    <v-container class="my-5">
+    <v-container class="my-3">
       <v-row class="mb-3">
         <v-tooltip top>
           <template v-slot:activator="{ on }">
@@ -48,19 +47,32 @@
 </template>
 
 <script>
-import Content from '../assets/mock/projects'
+import db from '@/fb'
 
 export default {
   name: 'dashboard',
   data() {
     return {
-      projects: Content.projects
+      projects: []
     }
   },
   methods: {
     sortBy (prop) {
       return this.projects.sort((a, b) => a[prop] < b[prop] ? -1 : 1) 
     }
+  },
+  created() {
+    db.collection('projects').onSnapshot(res => {
+      const changes = res.docChanges()
+      changes.forEach(change => {
+        if (change.type === 'added') {
+          this.projects.push({
+            ...change.doc.data(),
+            id: change.doc.id
+          })
+        }
+      })
+    })
   }
 }
 </script>
